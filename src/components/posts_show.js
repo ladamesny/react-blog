@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchPost } from '../actions/index';
 
 class PostsShow extends Component {
+  componentWillmount() {
+    this.props.fetchPost(this.props.params.id);
+  }
+
   render(){
     return (
       <div>
@@ -10,4 +16,4 @@ class PostsShow extends Component {
   }
 }
 
-export default PostsShow;
+export default connect(null, { fetchPost })(PostsShow);
